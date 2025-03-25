@@ -1,34 +1,53 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
-import { fetchDetails } from '../api';
+import { Suspense, useEffect, useState } from 'react';
+import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router';
+import { fetchFilmById } from '../api';
+import MovieInfo from '../components/MovieInfo/MovieInfo';
+import { useRef } from 'react';
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  const location = useLocation();
+  const backLinkRef = useRef(location.state);
+
   useEffect(() => {
-    async function getDetailsMovie(movieId) {
+    async function getFilm() {
       try {
         setIsLoading(true);
         setError(false);
-        const response = await fetchDetails(movieId);
-        setMovie(response);
+        const data = await fetchFilmById(movieId);
+        setMovie(data);
       } catch {
         setError(true);
       } finally {
         setIsLoading(false);
       }
     }
-    getDetailsMovie(movieId);
+    getFilm();
   }, [movieId]);
   return (
-    <>
-      {isLoading && <p>is loading...</p>}
+    <div>
+      <Link to={backLinkRef.current}>Go back</Link>
+
+      {isLoading && <b>Loading...</b>}
       {error && <b>Error...</b>}
-      <div>
-        <h2>hello {console.log(movie)}</h2>
-      </div>
-    </>
+      {movie && <MovieInfo movie={movie} />}
+      <h4>Additional information</h4>
+
+      <ul>
+        <li>
+          <NavLink to='cast'>Cast</NavLink>
+        </li>
+        <li>
+          <NavLink to='reviews'>Reviews</NavLink>
+        </li>
+      </ul>
+
+      <Suspense fallback={<div>Loading casts or reviews</div>}>
+        <Outlet />
+      </Suspense>
+    </div>
   );
 }

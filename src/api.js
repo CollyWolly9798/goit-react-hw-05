@@ -7,26 +7,26 @@ const options = {
   },
 };
 
-export const fetchMovies = async () => {
-  const url = ' https://api.themoviedb.org/3/trending/movie/day?include_adult=false&lang=en-US&page=1';
-
-  try {
-    const response = await axios.get(url, options);
-    return response.data;
-  } catch (err) {
-    console.error(err);
-    return [];
-  }
+export const fetchPopularFilms = async () => {
+  const response = await axios.get('https://api.themoviedb.org/3/trending/movie/day', options);
+  return response.data.results;
 };
 
-export const fetchDetails = async movieId => {
-  const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
+export const fetchFilmById = async filmID => {
+  const response = await axios.get(`https://api.themoviedb.org/3/movie/${filmID}`, options);
+  return response.data;
+};
 
-  try {
-    const response = await axios.get(url, options);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
+export const fetchQueryFilms = async query => {
+  const response = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${query}`, options);
+  return response.data.results;
+};
+
+export const getCast = async filmID => {
+  const response = await axios.get(`https://api.themoviedb.org/3/movie/${filmID}/credits`, options);
+  return response.data.cast;
+};
+export const getReviews = async filmID => {
+  const response = await axios.get(`https://api.themoviedb.org/3/movie/${filmID}/reviews`, options);
+  return response.data.results;
 };
