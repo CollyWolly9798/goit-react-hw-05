@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
 import { getCast } from '../../api';
 import { useEffect, useState } from 'react';
-import styles from './MovieCast.module.css';
+import css from './MovieCast.module.scss';
 
 export default function MovieCast() {
   const { movieId } = useParams();
@@ -17,20 +17,20 @@ export default function MovieCast() {
   }, [movieId]);
 
   return (
-    <div className={styles.movieCastContainer}>
+    <div className={css.movieCastContainer}>
       {cast.length === 0 ? (
-        <p className={styles.noActorInfo}>There is no information about this film</p>
+        <p className={css.noActorInfo}>There is no information about this film</p>
       ) : (
-        <ul className={styles.actorList}>
+        <ul className={css.actorList}>
           {cast.map(actor => (
-            <li key={actor.id} className={styles.actorCard}>
+            <li key={actor.id} className={css.actorCard}>
               <img
-                className={styles.actorCardImage}
+                className={css.actorCardImage}
                 src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
                 alt={actor.name}
               />
-              <h3 className={styles.actorCardTitle}>{actor.name}</h3>
-              <p className={styles.actorCardDescription}>Character: {actor.character}</p>
+              <h3 className={css.actorCardTitle}>{actor.name}</h3>
+              <p className={css.actorCardDescription}>Character: {actor.character}</p>
             </li>
           ))}
         </ul>

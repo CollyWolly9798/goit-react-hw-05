@@ -1,0 +1,17 @@
+$lightBlueColor: #1e90ff;
+$lightBlueColor2: #007bff;
+$blueColor: #646cff;
+$blueColor2: #0056b3;
+$darkBlueColor: #2c3e50;
+$lightGreyColor: #cccccc;
+$greyColor: #555555;
+$darkGreyColor: #666666;
+$blackColor: #333333;
+$lightWhiteColor: #f9f9f9;
+$whiteColor: #ffffff;
+
+@mixin displayFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,17 +1,16 @@
+@import '../../assets/variables/variables.scss';
+
 .header {
-  background-color: #333;
+  background-color: $blackColor;
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include displayFlex();
 }
 
 .list {
-  list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
@@ -21,18 +20,18 @@
 .link {
   text-decoration: none;
   font-size: 1.1rem;
-  color: #fff;
+  color: $whiteColor;
   font-weight: 500;
   transition: color 0.3s, transform 0.3s ease-in-out;
 }
 
 .link:hover {
-  color: #1e90ff;
+  color: $lightBlueColor;
   transform: scale(1.1);
 }
 
 .active {
-  color: #1e90ff;
+  color: $lightBlueColor;
   font-weight: 600;
-  border-bottom: 2px solid #1e90ff;
+  border-bottom: 2px solid $lightBlueColor;
 }

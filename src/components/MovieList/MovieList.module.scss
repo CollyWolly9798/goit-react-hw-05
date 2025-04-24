@@ -1,6 +1,8 @@
+@import '../../assets/variables/variables.scss';
+
 .movieListContainer {
   padding: 20px;
-  background-color: #f8f9fa;
+  background-color: $lightWhiteColor;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -8,7 +10,7 @@
 .movieListTitle {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #333;
+  color: $blackColor;
   margin-bottom: 15px;
 }
 
@@ -21,16 +23,16 @@
 .movieListItem {
   margin-bottom: 12px;
   padding: 10px;
-  background-color: #fff;
+  background-color: $whiteColor;
   border-radius: 5px;
-  border: 1px solid #ddd;
+  border: 1px solid $lightGreyColor;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, transform 0.3s;
 }
 
 .movieListItemLink {
   font-size: 1.2rem;
-  color: #007bff;
+  color: $lightBlueColor2;
   text-decoration: none;
   display: block;
   font-weight: 500;
@@ -38,11 +40,11 @@
 }
 
 .movieListItemLink:hover {
-  color: #0056b3;
+  color: $blueColor2;
   transform: translateX(5px);
 }
 
 .movieListItem:hover {
-  background-color: #f1f1f1;
+  background-color: $lightWhiteColor;
   transform: translateY(-5px);
 }

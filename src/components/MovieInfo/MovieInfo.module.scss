@@ -1,8 +1,12 @@
+@import '../../assets/variables/variables.scss';
+
 .container {
   display: flex;
+  flex-wrap: wrap;
   max-width: 800px;
   margin: 20px auto;
   align-items: flex-start;
+  justify-content: center;
 }
 
 .image {
@@ -27,7 +31,7 @@
 
 .userScore {
   font-size: 16px;
-  color: gray;
+  color: $greyColor;
   margin: 5px 0;
 }
 
@@ -42,10 +46,11 @@
   padding: 0;
   display: flex;
   gap: 10px;
+  justify-content: center;
 }
 
 .genreList li {
-  background: #ddd;
+  background: $lightGreyColor;
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 14px;
